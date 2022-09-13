@@ -1,0 +1,30 @@
+body {
+    display: grid;
+    place-items: center;
+    gap: 8px;
+    grid-template-rows: 32px 1fr 32px;
+}
+
+.photo-card {
+    padding: 8px;
+    border: 2px solid gray;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photo-card img {
+    border-radius: 4px 4px 0 0;
+}
+
+.photo-card .info {
+    display: flex;
+    gap: 16px;
+    margin: 0 auto;
+}
+
+.load-more {
+    display: none;
+}
