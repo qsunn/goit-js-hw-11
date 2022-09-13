@@ -1,0 +1,2 @@
+body{grid-template-rows:32px 1fr 32px;align-items:center;justify-items:center;gap:8px;display:grid}.photo-card{border:2px solid gray;border-radius:8px;flex-direction:column;align-items:center;margin-bottom:16px;padding:8px;display:flex}.photo-card img{border-radius:4px 4px 0 0}.photo-card .info{gap:16px;margin:0 auto;display:flex}.load-more{display:none}
+/*# sourceMappingURL=index.f4037444.css.map */
