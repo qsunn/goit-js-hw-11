@@ -36,7 +36,7 @@ const generateGallery = (array) => {
 
 const checkIfEnd = (data) => {
     const images = [...document.querySelectorAll('.photo-card')];
-    if (data.totalHits > data.hits.length) loadBtn.classList.toggle('hide');
+    if (data.totalHits > data.hits.length) loadBtn.style.display = 'block';
     if (images.length >= data.totalHits) {
         loadBtn.classList.toggle('hide');
         Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
@@ -49,7 +49,7 @@ form.addEventListener('submit', (event) => {
     page = 1;
     gallery.innerHTML = '';
     input = form.elements.searchQuery.value.trim();
-    loadBtn.classList.toggle('hide');
+    loadBtn.style.display = 'none';
 
     if (input) {
         fetchImages(input, page).then(data => {
