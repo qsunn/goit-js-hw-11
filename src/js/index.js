@@ -5,6 +5,9 @@ const form = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
 const loadBtn = document.querySelector('.load-more');
 
+let page = 1;
+let input = '';
+
 const show = () => loadBtn.style.display = 'block';
 const hide = () => loadBtn.style.display = 'none';
 
@@ -14,9 +17,6 @@ const reset = () => {
     input = form.elements.searchQuery.value.trim();
     hide();
 };
-
-let page = 1;
-let input = '';
 
 const generateCard = (card) => {
     return `
