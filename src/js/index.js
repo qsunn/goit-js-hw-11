@@ -1,9 +1,19 @@
-import Notiflix from 'notiflix';
 import { fetchImages } from './fetchImages';
+import { success, info, failure } from './notify';
 
 const form = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
 const loadBtn = document.querySelector('.load-more');
+
+const show = () => loadBtn.style.display = 'block';
+const hide = () => loadBtn.style.display = 'none';
+
+const reset = () => {
+    page = 1;
+    gallery.innerHTML = '';
+    input = form.elements.searchQuery.value.trim();
+    hide();
+};
 
 let page = 1;
 let input = '';
@@ -36,29 +46,24 @@ const generateGallery = (array) => {
 
 const checkIfEnd = (data) => {
     const images = [...document.querySelectorAll('.photo-card')];
-    if (data.totalHits > data.hits.length) loadBtn.style.display = 'block';
+    if (data.totalHits > data.hits.length) show();
     if (images.length >= data.totalHits) {
-        loadBtn.style.display = 'none';
-        Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+        hide();
+        info();
     };
 };
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
-
-    page = 1;
-    gallery.innerHTML = '';
-    input = form.elements.searchQuery.value.trim();
-    loadBtn.style.display = 'none';
-
+    reset();
     if (input) {
         fetchImages(input, page).then(data => {
-            Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
+            success(data.totalHits);
             generateGallery(data.hits);
             checkIfEnd(data);
         });
     } else {
-        Notiflix.Notify.failure("Input can't be empty");
+        failure();
     };
 });
 

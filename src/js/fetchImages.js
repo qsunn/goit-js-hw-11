@@ -1,4 +1,4 @@
-import Notiflix from 'notiflix';
+import { failure } from './notify';
 
 const axios = require('axios');
 
@@ -22,6 +22,6 @@ export async function fetchImages(input, page) {
         if (data.totalHits === 0) throw new Error();
         return data;
     } catch {
-        Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.");
+        failure();
     };
 };
