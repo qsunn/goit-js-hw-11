@@ -20,7 +20,6 @@ export async function fetchImages(input, page) {
         });
         const data = response.data;
         if (data.totalHits === 0) throw new Error();
-        Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
         return data;
     } catch {
         Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.");

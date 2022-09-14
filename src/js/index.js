@@ -38,7 +38,7 @@ const checkIfEnd = (data) => {
     const images = [...document.querySelectorAll('.photo-card')];
     if (data.totalHits > data.hits.length) loadBtn.style.display = 'block';
     if (images.length >= data.totalHits) {
-        loadBtn.classList.toggle('hide');
+        loadBtn.style.display = 'none';
         Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
     };
 };
@@ -53,6 +53,7 @@ form.addEventListener('submit', (event) => {
 
     if (input) {
         fetchImages(input, page).then(data => {
+            Notiflix.Notify.success(`Hooray! We found ${data.totalHits} images.`);
             generateGallery(data.hits);
             checkIfEnd(data);
         });
